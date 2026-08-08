@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Creative Designer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo">Aria.</div>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span><span></span><span></span>
+  </div>
+  <ul id="navList">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="hero-content">
+    <span class="tag">✦ UI / UX Designer & Developer</span>
+    <h1>Hi, I'm Aria <span>I craft vibrant digital experiences</span></h1>
+    <p>I design and build colorful, human-centered websites and products that people love to use.</p>
+    <div class="btn-group">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Let's Talk</a>
+    </div>
+  </div>
+  <div class="scroll-down">↓</div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-title">
+    <span class="tag">Get To Know Me</span>
+    <h2>About Me</h2>
+  </div>
+  <div class="about-wrap">
+    <div class="about-img">
+      <div class="circle">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=500&auto=format&fit=crop" alt="Portrait">
+      </div>
+    </div>
+    <div class="about-text">
+      <p>I'm a passionate designer and front-end developer with a love for clean layouts, bold color, and delightful interactions. I turn ideas into engaging, easy-to-use digital products.</p>
+      <p>With a background in visual design and hands-on coding, I bridge the gap between beautiful design and functional development — always keeping the user at the center.</p>
+      <div class="stats">
+        <div><h3>4+</h3><span>Years Experience</span></div>
+        <div><h3>60+</h3><span>Projects Done</span></div>
+        <div><h3>30+</h3><span>Happy Clients</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:#fff5eb; border-radius:30px;">
+  <div class="section-title">
+    <span class="tag">What I Do</span>
+    <h2>My Skills</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="icon">🎨</div><h4>UI Design</h4></div>
+    <div class="skill-card"><div class="icon">💻</div><h4>HTML & CSS</h4></div>
+    <div class="skill-card"><div class="icon">⚡</div><h4>JavaScript</h4></div>
+    <div class="skill-card"><div class="icon">📱</div><h4>Responsive Design</h4></div>
+    <div class="skill-card"><div class="icon">🖌️</div><h4>Branding</h4></div>
+    <div class="skill-card"><div class="icon">🧩</div><h4>Prototyping</h4></div>
+    <div class="skill-card"><div class="icon">🚀</div><h4>Performance</h4></div>
+    <div class="skill-card"><div class="icon">🤝</div><h4>Collaboration</h4></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-title">
+    <span class="tag">My Work</span>
+    <h2>Featured Projects</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="project-info">
+        <span class="cat">Web Design</span>
+        <h3>Vivid Studio</h3>
+        <p>A colorful landing page for a creative agency.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="project-info">
+        <span class="cat">Branding</span>
+        <h3>Bloom App</h3>
+        <p>Playful branding and UI kit for a wellness app.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="project-info">
+        <span class="cat">Dashboard</span>
+        <h3>Pulse Analytics</h3>
+        <p>Clean, vibrant dashboard for a data platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box">
+    <h2>Let's Create Something Amazing</h2>
+    <p>Have a project in mind? I'd love to hear about it.</p>
+    <div class="contact-links">
+      <a href="mailto:hello@aria.com">✉ hello@aria.com</a>
+      <a href="#">Dribbble</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Aria. Designed with color & care.
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navList = document.getElementById('navList');
+  menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('active');
+  });
+  navList.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click', ()=> navList.classList.remove('active'));
+  });
+</script>
+
+</body>
+</html>

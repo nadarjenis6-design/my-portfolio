@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Creative Designer</title>
+<style>
+  :root{
+    --coral:#ff6b6b;
+    --teal:#4ecdc4;
+    --purple:#a78bfa;
+    --yellow:#ffd166;
+    --dark:#2b2d42;
+    --light:#fff8f0;
+    --grad: linear-gradient(135deg,#ff6b6b 0%, #a78bfa 50%, #4ecdc4 100%);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+    background:var(--light);
+    color:var(--dark);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{text-decoration:none;color:inherit;}
+
+  /* ---------- NAVBAR ---------- */
+  nav{
+    position:fixed;
+    top:0;left:0;right:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.1rem 6%;
+    background:rgba(255,248,240,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    box-shadow:0 2px 15px rgba(0,0,0,0.05);
+  }
+
+  nav .logo{
+    font-weight:800;
+    font-size:1.4rem;
+    background:var(--grad);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  nav ul{
+    display:flex;
+    list-style:none;
+    gap:2rem;
+  }
+
+  nav ul li a{
+    font-weight:600;
+    font-size:0.95rem;
+    position:relative;
+    transition:color .3s;
+  }
+
+  nav ul li a::after{
+    content:'';
+    position:absolute;
+    bottom:-4px;left:0;
+    width:0%;height:3px;
+    border-radius:2px;
+    background:var(--grad);
+    transition:width .3s;
+  }
+
+  nav ul li a:hover::after{width:100%;}
+  nav ul li a:hover{color:var(--coral);}
+
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+    z-index:1001;
+  }
+  .menu-toggle span{
+    width:26px;height:3px;background:var(--dark);border-radius:3px;
+    transition:.3s;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:0 6%;
+    background:
+      linear-gradient(135deg, rgba(255,107,107,0.75), rgba(167,139,250,0.75), rgba(78,205,196,0.75)),
+      url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat fixed;
+    color:#fff;
+  }
+
+  .hero-content{
+    max-width:700px;
+    animation:fadeUp 1s ease both;
+  }
+
+  .hero-content .tag{
+    display:inline-block;
+    padding:0.4rem 1.1rem;
+    background:rgba(255,255,255,0.2);
+    border:1px solid rgba(255,255,255,0.5);
+    border-radius:50px;
+    font-size:0.85rem;
+    font-weight:600;
+    letter-spacing:1px;
+    margin-bottom:1.2rem;
+    backdrop-filter:blur(5px);
+  }
+
+  .hero-content h1{
+    font-size:clamp(2.2rem, 6vw, 4rem);
+    font-weight:800;
+    margin-bottom:0.8rem;
+    text-shadow:0 4px 20px rgba(0,0,0,0.25);
+  }
+
+  .hero-content h1 span{
+    display:block;
+    background:linear-gradient(90deg,#ffd166,#fff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .hero-content p{
+    font-size:1.1rem;
+    margin-bottom:2rem;
+    opacity:0.95;
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .btn-group{
+    display:flex;
+    gap:1rem;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    padding:0.9rem 2rem;
+    border-radius:50px;
+    font-weight:700;
+    font-size:0.95rem;
+    transition:transform .3s, box-shadow .3s;
+    display:inline-block;
+    cursor:pointer;
+    border:none;
+  }
+
+  .btn-primary{
+    background:#fff;
+    color:var(--coral);
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+  }
+
+  .btn-outline{
+    background:transparent;
+    color:#fff;
+    border:2px solid #fff;
+  }
+
+  .btn:hover{transform:translateY(-4px);}
+  .btn-primary:hover{box-shadow:0 12px 30px rgba(0,0,0,0.3);}
+
+  .scroll-down{
+    position:absolute;
+    bottom:2rem;left:50%;
+    transform:translateX(-50%);
+    font-size:1.8rem;
+    color:#fff;
+    animation:bounce 2s infinite;
+  }
+
+  /* ---------- SECTION WRAPPER ---------- */
+  section{
+    padding:6rem 6%;
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  .section-title{
+    text-align:center;
+    margin-bottom:3rem;
+  }
+
+  .section-title .tag{
+    color:var(--coral);
+    font-weight:700;
+    letter-spacing:2px;
+    font-size:0.85rem;
+    text-transform:uppercase;
+  }
+
+  .section-title h2{
+    font-size:clamp(1.8rem,4vw,2.6rem);
+    font-weight:800;
+    margin-top:0.4rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-wrap{
+    display:flex;
+    align-items:center;
+    gap:3rem;
+    flex-wrap:wrap;
+  }
+
+  .about-img{
+    flex:1 1 280px;
+    min-width:260px;
+  }
+
+  .about-img .circle{
+    width:100%;
+    max-width:320px;
+    aspect-ratio:1/1;
+    margin:0 auto;
+    border-radius:50%;
+    background:var(--grad);
+    padding:8px;
+  }
+
+  .about-img .circle img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid var(--light);
+  }
+
+  .about-text{
+    flex:1 1 380px;
+  }
+
+  .about-text p{
+    margin-bottom:1rem;
+    color:#555;
+  }
+
+  .stats{
+    display:flex;
+    gap:2rem;
+    margin-top:1.5rem;
+    flex-wrap:wrap;
+  }
+
+  .stats div{
+    text-align:center;
+  }
+
+  .stats h3{
+    font-size:1.8rem;
+    font-weight:800;
+    background:var(--grad);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .stats span{
+    font-size:0.85rem;
+    color:#777;
+    font-weight:600;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:1.2rem;
+  }
+
+  .skill-card{
+    background:#fff;
+    border-radius:18px;
+    padding:1.6rem 1rem;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,0.06);
+    transition:transform .3s, box-shadow .3s;
+  }
+
+  .skill-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.12);
+  }
+
+  .skill-card .icon{
+    font-size:2rem;
+    margin-bottom:0.6rem;
+  }
+
+  .skill-card h4{
+    font-size:0.95rem;
+    font-weight:700;
+  }
+
+  /* alternating accent colors */
+  .skill-card:nth-child(4n+1){border-top:4px solid var(--coral);}
+  .skill-card:nth-child(4n+2){border-top:4px solid var(--teal);}
+  .skill-card:nth-child(4n+3){border-top:4px solid var(--purple);}
+  .skill-card:nth-child(4n+4){border-top:4px solid var(--yellow);}
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:1.8rem;
+  }
+
+  .project-card{
+    border-radius:20px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 8px 25px rgba(0,0,0,0.07);
+    transition:transform .35s;
+  }
+
+  .project-card:hover{transform:translateY(-6px) scale(1.01);}
+
+  .project-img{
+    height:190px;
+    background-size:cover;
+    background-position:center;
+  }
+
+  .project-info{
+    padding:1.3rem 1.4rem;
+  }
+
+  .project-info .cat{
+    font-size:0.75rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:var(--teal);
+  }
+
+  .project-info h3{
+    margin:0.4rem 0 0.5rem;
+    font-size:1.15rem;
+  }
+
+  .project-info p{
+    color:#666;
+    font-size:0.9rem;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-box{
+    background:var(--grad);
+    border-radius:28px;
+    padding:3.5rem 2rem;
+    text-align:center;
+    color:#fff;
+  }
+
+  .contact-box h2{
+    font-size:clamp(1.6rem,4vw,2.3rem);
+    font-weight:800;
+    margin-bottom:0.8rem;
+  }
+
+  .contact-box p{
+    opacity:0.95;
+    margin-bottom:2rem;
+  }
+
+  .contact-links{
+    display:flex;
+    justify-content:center;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+
+  .contact-links a{
+    background:rgba(255,255,255,0.2);
+    border:1px solid rgba(255,255,255,0.5);
+    padding:0.7rem 1.5rem;
+    border-radius:50px;
+    font-weight:600;
+    font-size:0.9rem;
+    backdrop-filter:blur(5px);
+    transition:.3s;
+  }
+
+  .contact-links a:hover{
+    background:#fff;
+    color:var(--coral);
+  }
+
+  footer{
+    text-align:center;
+    padding:2rem;
+    font-size:0.85rem;
+    color:#999;
+  }
+
+  /* ---------- ANIMATIONS ---------- */
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  @keyframes bounce{
+    0%,100%{transform:translate(-50%,0);}
+    50%{transform:translate(-50%,10px);}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:768px){
+    nav ul{
+      position:fixed;
+      top:0;right:-100%;
+      height:100vh;
+      width:70%;
+      background:var(--light);
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:2.2rem;
+      transition:right .4s ease;
+      box-shadow:-5px 0 25px rgba(0,0,0,0.1);
+    }
+    nav ul.active{right:0;}
+    .menu-toggle{display:flex;}
+    .about-wrap{flex-direction:column; text-align:center;}
+    .stats{justify-content:center;}
+    .hero{background-attachment:scroll;}
+  }
+
+  @media (max-width:480px){
+    section{padding:4rem 6%;}
+    .btn-group{flex-direction:column; align-items:center;}
+    .btn{width:100%; max-width:260px; text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Aria.</div>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span><span></span><span></span>
+  </div>
+  <ul id="navList">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="hero-content">
+    <span class="tag">✦ UI / UX Designer & Developer</span>
+    <h1>Hi, I'm Aria <span>I craft vibrant digital experiences</span></h1>
+    <p>I design and build colorful, human-centered websites and products that people love to use.</p>
+    <div class="btn-group">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Let's Talk</a>
+    </div>
+  </div>
+  <div class="scroll-down">↓</div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-title">
+    <span class="tag">Get To Know Me</span>
+    <h2>About Me</h2>
+  </div>
+  <div class="about-wrap">
+    <div class="about-img">
+      <div class="circle">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=500&auto=format&fit=crop" alt="Portrait">
+      </div>
+    </div>
+    <div class="about-text">
+      <p>I'm a passionate designer and front-end developer with a love for clean layouts, bold color, and delightful interactions. I turn ideas into engaging, easy-to-use digital products.</p>
+      <p>With a background in visual design and hands-on coding, I bridge the gap between beautiful design and functional development — always keeping the user at the center.</p>
+      <div class="stats">
+        <div><h3>4+</h3><span>Years Experience</span></div>
+        <div><h3>60+</h3><span>Projects Done</span></div>
+        <div><h3>30+</h3><span>Happy Clients</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:#fff5eb; border-radius:30px;">
+  <div class="section-title">
+    <span class="tag">What I Do</span>
+    <h2>My Skills</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="icon">🎨</div><h4>UI Design</h4></div>
+    <div class="skill-card"><div class="icon">💻</div><h4>HTML & CSS</h4></div>
+    <div class="skill-card"><div class="icon">⚡</div><h4>JavaScript</h4></div>
+    <div class="skill-card"><div class="icon">📱</div><h4>Responsive Design</h4></div>
+    <div class="skill-card"><div class="icon">🖌️</div><h4>Branding</h4></div>
+    <div class="skill-card"><div class="icon">🧩</div><h4>Prototyping</h4></div>
+    <div class="skill-card"><div class="icon">🚀</div><h4>Performance</h4></div>
+    <div class="skill-card"><div class="icon">🤝</div><h4>Collaboration</h4></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-title">
+    <span class="tag">My Work</span>
+    <h2>Featured Projects</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="project-info">
+        <span class="cat">Web Design</span>
+        <h3>Vivid Studio</h3>
+        <p>A colorful landing page for a creative agency.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="project-info">
+        <span class="cat">Branding</span>
+        <h3>Bloom App</h3>
+        <p>Playful branding and UI kit for a wellness app.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="project-info">
+        <span class="cat">Dashboard</span>
+        <h3>Pulse Analytics</h3>
+        <p>Clean, vibrant dashboard for a data platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box">
+    <h2>Let's Create Something Amazing</h2>
+    <p>Have a project in mind? I'd love to hear about it.</p>
+    <div class="contact-links">
+      <a href="mailto:hello@aria.com">✉ hello@aria.com</a>
+      <a href="#">Dribbble</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Aria. Designed with color & care.
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navList = document.getElementById('navList');
+  menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('active');
+  });
+  navList.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click', ()=> navList.classList.remove('active'));
+  });
+</script>
+
+</body>
+</html>
